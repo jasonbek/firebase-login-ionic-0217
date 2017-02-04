@@ -26,13 +26,15 @@ export class MyApp {
     messagingSenderId: "1065475258829"
     });
 
+  // It's here where you change what the first page should be shown is (see TabsPage)
+
       const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       this.zone.run( () => {
       if (!user) {
       this.rootPage = LoginPage;
       unsubscribe();
     } else { 
-      this.rootPage = HomePage; 
+      this.rootPage = TabsPage; 
       unsubscribe();
     }
   });     

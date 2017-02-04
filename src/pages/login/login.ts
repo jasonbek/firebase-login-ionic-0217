@@ -46,25 +46,23 @@ export class LoginPage {
     if (!this.loginForm.valid){
     console.log(this.loginForm.value);
   } else {
-    this.AuthService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( authData => {
-    this.navCtrl.setRoot(HomePage);
+    this.AuthService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then( AuthService => {
+    this.loading.dismiss(). then ( () => {
+      this.navCtrl.setRoot(HomePage);
+    })
   }, error => {
     this.loading.dismiss().then( () => {
       let alert = this.alertCtrl.create({
         message: error.message,
-        buttons: [
-          {
-            text: "Ok",
-            role: 'cancel'
-          }
-        ]
+        buttons: [{text: "Ok",role: 'cancel'}]
       });
       alert.present();
     });
   });
 
   this.loading = this.loadingCtrl.create({
-    dismissOnPageChange: true,
+    /*dismissOnPageChange: true, [we commmented this out as of Feb 4 2017 because it contributed to a promise 
+    issue after logging in ] */
   });
   this.loading.present();
   }

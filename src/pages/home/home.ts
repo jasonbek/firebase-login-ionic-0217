@@ -19,6 +19,14 @@ export class HomePage {
     public loadingCtrl: LoadingController, public navParams: NavParams) {
 }
 
+/* TO PULL
+
+logout(){
+this.navCtrl.pop();
+}
+*/
+
+/* TO PUSH */
 logout(){
 this.navCtrl.push(LoginPage);
 }
